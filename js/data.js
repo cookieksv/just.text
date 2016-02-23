@@ -19,6 +19,9 @@ var data = {
             header: '.entry-title',
             caption: '.entry-text',
             link: '.entry-title>a'
+        },
+        page: {
+            article: 'article.b-singlepost-body'
         }
     }
 };

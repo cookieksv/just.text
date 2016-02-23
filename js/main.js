@@ -7,9 +7,8 @@ $(function () {
 
     $('#listContainer').delegate('a.read-this', 'click', function(e) {
         e.preventDefault();
-        $(this).attr('data-source')
-        $(this).attr('href')
-        //getPage(data[select.val()]);
+
+        getPage($(this).attr('data-source'), $(this).attr('href'));
     });
 
 
@@ -37,4 +36,20 @@ function fillContent (result, source) {
     });
     $('#listContainer').empty();
     $('#listTmpl').tmpl(items).appendTo('#listContainer');
+}
+
+function getPage(source, url) {
+    $.ajax({
+        url: url
+    }).done(function (result) {
+        debugger;
+        var div = $('<div>').html(result),
+            items = [];
+
+        var article = div.find(data[source].page.article);
+        article.find('iframe').remove();
+
+        $('#pageContainer').empty();
+        $('#pageContainer').append(article);
+    });
 }
