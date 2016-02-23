@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>just text</title>
+    <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+    <script src="//ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.min.js" type="text/javascript"></script>
+    <script id="listTmpl" type="text/x-jquery-tmpl">
+        <div class="article">
+            <div class="base-info">
+                <h4>
+                    ${title}
+                </h4>
+                <p>
+                    ${caption}
+                </p>
+                <a class="read-this" href="${link}" data-source="${source}">перейти</a>
+            </div>
+        </div>
+    </script>
+</head>
+<body>
+
+<div class="content"></div>
+<select>
+    <option value="pm">pm</option>
+    <option value="gorkylook">gorkylook</option>
+</select>
+<button class="list-btn">list</button>
+<button class="content-btn">list</button>
+
+<div id="listContainer"></div>
+
+</body>
+</html>
