@@ -8,6 +8,12 @@ var data = {
             header: 'h4',
             caption: 'p',
             link: 'a'
+        },
+        page: {
+            header: '.subheader',
+            img: '.article-image',
+            article: '.mainContent',
+            date: '.mainblockDatetime'
         }
     },
     gorkylook: {
@@ -21,7 +27,27 @@ var data = {
             link: '.entry-title>a'
         },
         page: {
-            article: 'article.b-singlepost-body'
+            header: '.b-singlepost-title',
+            img: '.u-photo > img',
+            article: 'article.b-singlepost-body',
+            date: '.b-singlepost-author-userinfo-print time'
+        }
+    },
+    dolboeb: {
+        name: 'dolboeb',
+        prefix: '',
+        list: {
+            url: 'http://dolboeb.livejournal.com/',
+            short: '.entryHolderBg > table',
+            header: '.entryHeader',
+            caption: '.entry-content',
+            link: '.entryHeader>a'
+        },
+        page: {
+            header: '.b-singlepost-title',
+            img: '.u-photo > img',
+            article: 'article.b-singlepost-body',
+            date: '.b-singlepost-author-userinfo-print time'
         }
     }
 };
