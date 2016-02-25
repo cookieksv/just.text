@@ -5,7 +5,7 @@ $(function () {
 
     $('.list-btn').on('click', function(e) {
         pageContainer.hide();
-        getList(data[select.val()]);
+        getList(data[select.val()], $(this)[0]);
         window.scroll(0, 0);
     });
 
@@ -21,15 +21,16 @@ $(function () {
     $('#listContainer').delegate('a.read-this', 'click', function(e) {
         e.preventDefault();
 
-        getPage($(this).attr('data-source'), $(this).attr('href'));
-        window.scroll(0, 0);
+        getPage($(this).attr('data-source'), $(this).attr('href'), $(this).parent('.list-item')[0]);
     });
 });
 
-function getList (source) {
-    document.body.style.background = 'yellow';
+function getList (source, btn) {
+    btn.style.background = 'yellow';
+
+    var skip = parseInt($('#skip').val()) || 0;
     $.ajax({
-        url: source.prefix + source.list.url
+        url: source.prefix + source.list.url + source.list.skip + skip + '/10'
     }).done(function (result) {
         var div = $('<div>').html(result),
             items = [];
@@ -45,12 +46,12 @@ function getList (source) {
         $('#listContainer').empty();
         $('#listTmpl').tmpl(items).appendTo('#listContainer');
 
-        document.body.style.background = 'white';
+        btn.style.background = '';
     });
 }
 
-function getPage(source, url) {
-    document.body.style.background = 'yellow';
+function getPage(source, url, listItem) {
+    listItem.style.background = 'antiquewhite';
     $.ajax({
         url: url
     }).done(function (result) {
@@ -62,6 +63,7 @@ function getPage(source, url) {
         var article = div.find(data[source].page.article);
         article.find('iframe').remove();
         article.find('script').remove();
+        article.find('a').attr('target', '_blank');
 
         $('#pageContainer').empty()
             .append($('<h4>').html(div.find(data[source].page.header).text()))
@@ -69,6 +71,7 @@ function getPage(source, url) {
             .append(div.find(data[source].page.img))
             .append(article)
             .show();
-        document.body.style.background = 'white';
+        window.scroll(0, 0);
+        listItem.style.background = 'white';
     });
 }
