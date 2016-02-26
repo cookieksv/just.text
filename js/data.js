@@ -1,7 +1,7 @@
 var data = {
     pm: {
         name: 'pm',
-        prefix: 'http://petrimazepa.com',
+        prefix: 'http://www.petrimazepa.com',
         list: {
             url: '/ajax/articles',
             skip: '/',
