@@ -1,21 +1,24 @@
 $(function () {
 
+    function up () {
+        window.scroll(0, 0);
+    }
     var select = $('select'),
         pageContainer = $('#pageContainer').hide();
 
     $('.list-btn').on('click', function(e) {
         pageContainer.hide();
         getList(data[select.val()], $(this)[0]);
-        window.scroll(0, 0);
+        up();
     });
 
     $('.page-btn').on('click', function(e) {
-        $('#pageContainer').toggle();
-        window.scroll(0, 0);
+        pageContainer.toggle();
+        up();
     });
 
     $('.up-btn').on('click', function(e) {
-        window.scroll(0, 0);
+        up();
     });
 
     $('#listContainer').delegate('a.read-this', 'click', function(e) {
@@ -71,7 +74,7 @@ function getPage(source, url, listItem) {
             .append(div.find(data[source].page.img))
             .append(article)
             .show();
-        window.scroll(0, 0);
+        up();
         listItem.style.background = 'white';
     });
 }
