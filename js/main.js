@@ -1,8 +1,5 @@
 $(function () {
 
-    function up () {
-        window.scroll(0, 0);
-    }
     var select = $('select'),
         pageContainer = $('#pageContainer').hide();
 
@@ -27,6 +24,10 @@ $(function () {
         getPage($(this).attr('data-source'), $(this).attr('href'), $(this).parent('.list-item')[0]);
     });
 });
+
+function up () {
+    window.scroll(0, 0);
+}
 
 function getList (source, btn) {
     btn.style.background = 'yellow';
